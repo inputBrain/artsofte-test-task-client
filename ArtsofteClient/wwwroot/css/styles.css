@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.sidebar {
+    height: 100vh;
+    background-color: #f8f9fa;
+    padding-top: 20px;
+}
+.sidebar .nav-link {
+    color: #333;
+}
+.sidebar .nav-link.active {
+    background-color: #e9ecef;
+}
+
+.content {
+    padding: 20px;
+}
+
+.table-responsive {
+    margin-top: 20px;
+}
+.btn-action {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+.sortable {
+    cursor: pointer;
+}
+.sortable::after {
+    content: '\f0dc';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    margin-left: 5px;
+}
+.sortable.asc::after {
+    content: '\f0de';
+}
+.sortable.desc::after {
+    content: '\f0dd';
+}
