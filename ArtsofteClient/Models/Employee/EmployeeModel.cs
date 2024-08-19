@@ -1,4 +1,4 @@
-﻿namespace ArtsofteClient.Models;
+﻿namespace ArtsofteClient.Models.Employee;
 
 public class EmployeeModel
 {

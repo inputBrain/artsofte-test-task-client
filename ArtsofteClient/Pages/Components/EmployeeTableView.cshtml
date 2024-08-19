@@ -1,4 +1,4 @@
-﻿@model List<ArtsofteClient.Models.EmployeeModel>
+﻿@model ArtsofteClient.ViewComponents.EmployeeTable.EmployeeData
 
 <div class="container mt-5">
     <button type="button" class="btn btn-sm btn-info">Create</button>
@@ -17,7 +17,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Employees)
         {
             <tr>
                 <td>@item.Id</td>

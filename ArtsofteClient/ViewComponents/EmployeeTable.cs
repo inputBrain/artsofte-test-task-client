@@ -1,20 +1,40 @@
-﻿using ArtsofteClient.Models;
+﻿using ArtsofteClient.Models.Employee;
+using ArtsofteClient.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ArtsofteClient.ViewComponents;
 
 public class EmployeeTable : ViewComponent
 {
-    public IViewComponentResult Invoke()
+    private readonly IRequestSender _sender;
+
+    public EmployeeTable(IRequestSender sender)
     {
-        var collection = new List<EmployeeModel>
+        _sender = sender;
+    }
+    
+    
+    public async Task<IViewComponentResult> InvokeAsync()
+    {
+        var body = new RequestBody()
         {
-            new(){Id = 1, Department = "Department 1", Language = "C#", Name = "Alex", Surname = "Pro", Age = 10, Gender = "Male"},
-            new(){Id = 2, Department = "Department 2", Language = "PHP", Name = "Bob", Surname = "Noob", Age = 16, Gender = "Female"},
-            new(){Id = 3, Department = "Department 3", Language = "Ruby", Name = "Oleg", Surname = "John", Age = 20, Gender = "Trans"},
-            new(){Id = 4, Department = "Department 4", Language = "Python", Name = "Hellen", Surname = "Budq", Age = 30, Gender = "Intersex"}
+            Skip = 0,
+            Take = 10
         };
         
+        var collection = await _sender.SendPostRequest<EmployeeData>("http://localhost:5000/api/Employee/ListAllEmployees", body);
+
         return View("/Pages/Components/EmployeeTableView.cshtml", collection);
+    }
+
+
+    public class EmployeeData
+    {
+        public List<EmployeeModel> Employees { get; set; }
+    }
+    public class RequestBody()
+    {
+        public int Skip { get; set; }
+        public int Take { get; set; }
     }
 }
