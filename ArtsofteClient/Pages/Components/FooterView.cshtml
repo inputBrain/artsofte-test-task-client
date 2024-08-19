@@ -1,6 +1,18 @@
 ﻿<footer class="py-3 my-4">
-    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-    </ul>
-    <p class="text-center text-body-secondary">© 2024 Company, Inc</p>
+    <p class="text-center text-body-secondary"></p>
+    <hr class="mt-8 opacity-25"/>
+    <div>
+        <div class="row gy-4 align-items-center">
+            <div class="col-md-6">
+                <span class="small text-muted">
+                    © 2024 -
+                    <span id="copyright">
+                        <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()));</script>
+                    </span>
+                    Artsofte company. All rights reserved.
+                    <a href="@Url.Action("Privacy")">Privacy Policy</a>
+                </span>
+            </div>
+        </div>
+    </div>
 </footer>

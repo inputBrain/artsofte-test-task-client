@@ -2,10 +2,10 @@
 
 namespace ArtsofteClient.ViewComponents;
 
-public class Slidebar : ViewComponent
+public class Sidebar : ViewComponent
 {
     public IViewComponentResult Invoke()
     {
-        return View("/Pages/Components/SlidebarView.cshtml");
+        return View("/Pages/Components/SidebarView.cshtml");
     }
 }
