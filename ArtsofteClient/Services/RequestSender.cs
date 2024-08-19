@@ -23,7 +23,7 @@ public class RequestSender : IRequestSender
     }
     
     
-    public async Task<T> SendPostRequest<T>(string url, object? body)
+    public async Task<T> SendPostRequest<T>(string url, object body)
     {
         var jsonContent = JsonSerializer.Serialize(body);
         var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");

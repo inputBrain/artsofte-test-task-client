@@ -2,8 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtsofteClient", "ArtsofteClient\ArtsofteClient.csproj", "{C95D4FFD-3DD2-4CBA-BB23-6CBAC0ED554D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtsofteClient.API", "ArtsofteClient.API\ArtsofteClient.API.csproj", "{3ADBB1A7-4874-4209-9163-A86D21BEC9B4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,9 +12,5 @@ Global
 		{C95D4FFD-3DD2-4CBA-BB23-6CBAC0ED554D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C95D4FFD-3DD2-4CBA-BB23-6CBAC0ED554D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C95D4FFD-3DD2-4CBA-BB23-6CBAC0ED554D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3ADBB1A7-4874-4209-9163-A86D21BEC9B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3ADBB1A7-4874-4209-9163-A86D21BEC9B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3ADBB1A7-4874-4209-9163-A86D21BEC9B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3ADBB1A7-4874-4209-9163-A86D21BEC9B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

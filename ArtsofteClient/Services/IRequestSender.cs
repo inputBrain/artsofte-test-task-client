@@ -4,5 +4,5 @@ public interface IRequestSender
 {
     Task<T> SendGetRequest<T>(string url);
 
-    Task<T> SendPostRequest<T>(string url, object? body);
+    Task<T> SendPostRequest<T>(string url, object body);
 }

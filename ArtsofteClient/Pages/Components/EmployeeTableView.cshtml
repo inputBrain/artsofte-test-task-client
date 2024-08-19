@@ -1,4 +1,4 @@
-﻿@model ArtsofteClient.ViewComponents.EmployeeTable.EmployeeData
+﻿@model ArtsofteClient.API.Employee.GetAllEmployees
 
 <div class="container mt-5">
     <button type="button" class="btn btn-sm btn-info">Create</button>
@@ -29,7 +29,8 @@
                 <td>@item.Gender</td>
                 <td>
                     <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-sm btn-outline-warning">Edit</button>
+                        <button type="button" class="btn btn-sm btn-outline-warning" 
+                                onclick="location.href='@Url.Action("UpdateEmployeeForm", "Home", new { employeeId = item.Id })'">Edit</button>
                         <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
                     </div>
                 </td>
@@ -37,19 +38,4 @@
         }
         </tbody>
     </table>
-    <nav aria-label="...">
-        <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-                <span class="page-link">Previous</span>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active" aria-current="page">
-                <span class="page-link">2</span>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
-    </nav>
 </div>

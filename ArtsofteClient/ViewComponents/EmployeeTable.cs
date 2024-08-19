@@ -1,4 +1,4 @@
-﻿using ArtsofteClient.Models.Employee;
+﻿using ArtsofteClient.API.Employee;
 using ArtsofteClient.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,25 +16,8 @@ public class EmployeeTable : ViewComponent
     
     public async Task<IViewComponentResult> InvokeAsync()
     {
-        var body = new RequestBody()
-        {
-            Skip = 0,
-            Take = 10
-        };
-        
-        var collection = await _sender.SendPostRequest<EmployeeData>("http://localhost:5000/api/Employee/ListAllEmployees", body);
+        var collection = await _sender.SendPostRequest<GetAllEmployees>("http://localhost:5000/api/Employee/ListAllEmployees", new object());
 
         return View("/Pages/Components/EmployeeTableView.cshtml", collection);
-    }
-
-
-    public class EmployeeData
-    {
-        public List<EmployeeModel> Employees { get; set; }
-    }
-    public class RequestBody()
-    {
-        public int Skip { get; set; }
-        public int Take { get; set; }
     }
 }

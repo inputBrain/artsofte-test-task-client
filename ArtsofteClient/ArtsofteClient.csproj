@@ -7,7 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ArtsofteClient.API\ArtsofteClient.API.csproj" />
+      <Folder Include="API\Department\" />
+      <Folder Include="API\Language\" />
+      <Folder Include="Models\Language\" />
     </ItemGroup>
 
 </Project>
