@@ -1,8 +1,6 @@
-﻿using System.Text;
-using ArtsofteClient.API.Department;
+﻿using ArtsofteClient.API.Department;
 using ArtsofteClient.API.Employee;
 using ArtsofteClient.API.Language;
-using ArtsofteClient.Models.Employee;
 using ArtsofteClient.Services;
 using ArtsofteClient.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -21,18 +19,17 @@ public class EmployeeController : Controller
         _requestSender = requestSender;
     }
     
-    
-    public async Task<IActionResult> CreateEmployee(string name, string surname, int age, int departmentId, int languageId, int gender)
+
+    public async Task<IActionResult> CreateEmployee(CreateEmployeeViewModel model)
     {
         var requestBody = new CreateEmployeeResponse.RequestBody
         {
-            Name = name,
-            Surname = surname,
-            Age = age,
-            DepartmentId = departmentId,
-            LanguageId = languageId,
-            Gender = gender
-
+            Name = model.Name,
+            Surname = model.Surname,
+            Age = model.Age,
+            DepartmentId = model.DepartmentId,
+            LanguageId = model.LanguageId,
+            Gender = model.Gender
         };
     
         await _requestSender.SendPostRequest<GetAllEmployeeResponse>(BaseUrl + "Employee/CreateEmployee", requestBody);
