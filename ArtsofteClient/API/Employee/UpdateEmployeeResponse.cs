@@ -1,6 +1,6 @@
 ﻿namespace ArtsofteClient.API.Employee;
 
-public class UpdateEmployee
+public class UpdateEmployeeResponse
 {
     public class RequestBody
     {

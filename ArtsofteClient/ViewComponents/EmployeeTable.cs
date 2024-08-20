@@ -16,7 +16,7 @@ public class EmployeeTable : ViewComponent
     
     public async Task<IViewComponentResult> InvokeAsync()
     {
-        var collection = await _sender.SendPostRequest<GetAllEmployees>("http://localhost:5000/api/Employee/ListAllEmployees", new object());
+        var collection = await _sender.SendPostRequest<GetAllEmployeeResponse>("http://localhost:5000/api/Employee/ListAllEmployees", new object());
 
         return View("/Pages/Components/EmployeeTableView.cshtml", collection);
     }

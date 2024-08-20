@@ -37,8 +37,32 @@ public class RequestSender : IRequestSender
 
         return responseData;
     }
-    
-    
+
+
+    public async Task SendPostRequest(string url, object body)
+    {
+        var jsonContent = JsonSerializer.Serialize(body);
+        var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+        var response = await _client.PostAsync(url, content);
+        response.EnsureSuccessStatusCode();
+    }
+
+
+    public async Task SendWithBodyAsync(string url, object body, HttpMethod httpMethod)
+    {
+        var request = new HttpRequestMessage
+        {
+            Method = httpMethod,
+            RequestUri = new Uri(url),
+            Content = new StringContent(JsonSerializer.Serialize(body), Encoding.UTF8, "application/json")
+        };
+        
+        var response = await _client.SendAsync(request);
+        response.EnsureSuccessStatusCode();
+    }
+
+
     private static readonly JsonSerializerOptions JsonSerializerOptions = new()
     {
         PropertyNameCaseInsensitive = true

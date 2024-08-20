@@ -1,4 +1,4 @@
-﻿@model ArtsofteClient.API.Employee.GetAllEmployees
+﻿@model ArtsofteClient.API.Employee.GetAllEmployeeResponse
 
 <div class="container mt-5">
     <button type="button" class="btn btn-sm btn-info">Create</button>
@@ -30,8 +30,10 @@
                 <td>
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-sm btn-outline-warning" 
-                                onclick="location.href='@Url.Action("UpdateEmployeeForm", "Home", new { employeeId = item.Id })'">Edit</button>
-                        <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+                                onclick="location.href='@Url.Action("UpdateEmployeeForm", "Employee", new { employeeId = item.Id })'">Edit</button>
+
+                        <button type="button" class="btn btn-sm btn-outline-danger"
+                                onclick="location.href='@Url.Action("DeleteEmployee", "Employee", new { employeeId = item.Id})'">Delete</button>
                     </div>
                 </td>
             </tr>

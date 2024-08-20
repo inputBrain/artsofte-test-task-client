@@ -6,10 +6,4 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
-    <ItemGroup>
-      <Folder Include="API\Department\" />
-      <Folder Include="API\Language\" />
-      <Folder Include="Models\Language\" />
-    </ItemGroup>
-
 </Project>

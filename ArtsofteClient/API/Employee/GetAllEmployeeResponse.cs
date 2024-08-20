@@ -2,7 +2,7 @@
 
 namespace ArtsofteClient.API.Employee;
 
-public class GetAllEmployees
+public class GetAllEmployeeResponse
 {
     public List<EmployeeModel> Employees { get; set; }
 }
