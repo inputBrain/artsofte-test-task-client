@@ -16,6 +16,6 @@ public class CreateEmployeeResponse
 
         public int LanguageId { get; set; }
         
-        public Gender Gender { get; set; }
+        public int Gender { get; set; }
     }
 }

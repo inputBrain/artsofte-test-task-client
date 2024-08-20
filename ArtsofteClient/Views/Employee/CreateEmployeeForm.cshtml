@@ -1,4 +1,6 @@
-﻿<div class="d-flex justify-content-center">
+﻿@model ArtsofteClient.ViewModels.CreateEmployeeViewModel
+
+<div class="d-flex justify-content-center">
     <div class="col-md-6">
         <h1>Create Employee</h1>
         @using (Html.BeginForm("CreateEmployee", "Employee", FormMethod.Post))
@@ -19,27 +21,33 @@
             <label for="languageId" class="form-label">Language</label>
             <select class="form-select" name="languageId" aria-label="Default select example" required>
                 <option selected disabled value="">Select Language</option>
-                <option value="1">C#</option>
-                <option value="2">PHP</option>
-                <option value="3">Python</option>
+                @foreach (var language in Model.Languages)
+                {
+                <option value="@language.Id">
+                    @language.Language
+                </option>
+                }
             </select>
         </div>
         <div class="mb-3">
             <label for="departmentId" class="form-label">Department</label>
             <select class="form-select" name="departmentId" aria-label="Default select example" required>
                 <option selected disabled value="">Select Department</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                @foreach (var department in Model.Departments)
+                {
+                <option value="@department.Id">
+                    @department.Name
+                </option>
+                }
             </select>
         </div>
         <div class="mb-3">
-            <label for="genderId" class="form-label">Gender</label>
-            <select class="form-select" name="departmentId" aria-label="Default select example" required>
+            <label for="gender" class="form-label">Department</label>
+            <select class="form-select" name="gender" aria-label="Default select example" required>
                 <option selected disabled value="">Select Gender</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+                }
             </select>
         </div>
         <button type="submit" class="btn btn-primary" style="margin-top: 60px">Create Employee</button>

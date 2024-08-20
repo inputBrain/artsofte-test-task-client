@@ -1,6 +1,4 @@
-﻿using ArtsofteClient.Models.Employee;
-
-namespace ArtsofteClient.Models.Department;
+﻿namespace ArtsofteClient.Models.Department;
 
 public class DepartmentModel
 {
@@ -9,6 +7,4 @@ public class DepartmentModel
     public string Name { get; set; }
 
     public int Floor { get; set; }
-
-    public List<EmployeeModel> Employees { get; set; }
 }

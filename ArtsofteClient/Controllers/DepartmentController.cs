@@ -17,9 +17,9 @@ public class DepartmentController : Controller
     }
 
 
-    public async Task<IActionResult> ListAllDepartment()
+    public async Task<IActionResult> Index()
     {
-        await _requestSender.SendPostRequest<GetAllDepartmentResponse>(BaseUrl + "ListAllDepartment", new object());
-        return Ok();
+        var collection = await _requestSender.SendPostRequest<GetAllDepartmentResponse>(BaseUrl + "ListAllDepartment", new object());
+        return View(collection);
     }
 }

@@ -1,0 +1,41 @@
+﻿@model ArtsofteClient.API.Department.GetAllDepartmentResponse
+
+
+<div class="row">
+    <div class="col-md-3">
+        @await Component.InvokeAsync("Sidebar")
+    </div>
+    <div class="col-md-9">
+        <div class="container mt-5">
+            <button type="button" class="btn btn-sm btn-info" disabled>Coming soon</button>
+            <hr>
+            <table class="table table-hover" id="newsTable">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Floor</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.Departments)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Floor</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-sm btn-outline-warning" disabled>Coming soon</button>
+                                <button type="button" class="btn btn-sm btn-outline-danger" disabled>Coming soon</button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

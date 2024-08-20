@@ -17,9 +17,10 @@ public class LanguageController : Controller
     }
 
 
-    public async Task<IActionResult> ListAllLanguage()
+    public async Task<IActionResult> Index()
     {
-        var collection = await _requestSender.SendPostRequest<GetAllLanguageResponse>(BaseUrl + "ListAllDepartment", new object());
-        return Ok();
+        var collection = await _requestSender.SendPostRequest<GetAllLanguageResponse>(BaseUrl + "ListAllLanguage", new object());
+
+        return View(collection);
     }
 }

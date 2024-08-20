@@ -1,14 +1,17 @@
 ﻿using System.Text;
+using ArtsofteClient.API.Department;
 using ArtsofteClient.API.Employee;
+using ArtsofteClient.API.Language;
 using ArtsofteClient.Models.Employee;
 using ArtsofteClient.Services;
+using ArtsofteClient.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ArtsofteClient.Controllers;
 
 public class EmployeeController : Controller
 {
-    private const string BaseUrl = "http://localhost:5000/api/Employee/";
+    private const string BaseUrl = "http://localhost:5000/api/";
 
     private readonly IRequestSender _requestSender;
 
@@ -19,7 +22,7 @@ public class EmployeeController : Controller
     }
     
     
-    public async Task<IActionResult> CreateEmployee(string name, string surname, int age, int departmentId, int languageId, Gender gender)
+    public async Task<IActionResult> CreateEmployee(string name, string surname, int age, int departmentId, int languageId, int gender)
     {
         var requestBody = new CreateEmployeeResponse.RequestBody
         {
@@ -32,15 +35,24 @@ public class EmployeeController : Controller
 
         };
     
-        await _requestSender.SendPostRequest<GetAllEmployeeResponse>(BaseUrl + "CreateEmployee", requestBody);
+        await _requestSender.SendPostRequest<GetAllEmployeeResponse>(BaseUrl + "Employee/CreateEmployee", requestBody);
 
         return RedirectToAction("Index", "Home");
     }
 
 
-    public IActionResult CreateEmployeeForm()
+    public async Task<IActionResult> CreateEmployeeForm()
     {
-        return View();
+        var languages = await _requestSender.SendPostRequest<GetAllLanguageResponse>(BaseUrl + "Language/ListAllLanguage", new object());
+        var departments = await _requestSender.SendPostRequest<GetAllDepartmentResponse>(BaseUrl + "Department/ListAllDepartment", new object());
+        
+        var viewModel = new CreateEmployeeViewModel
+        {
+            Languages = languages.Languages,
+            Departments = departments.Departments
+        };
+        
+        return View(viewModel);
     }
     
     
@@ -56,7 +68,7 @@ public class EmployeeController : Controller
             Age = age
         };
     
-        await _requestSender.SendPostRequest(BaseUrl + "UpdateEmployee", requestBody);
+        await _requestSender.SendPostRequest(BaseUrl + "Employee/UpdateEmployee", requestBody);
 
         return RedirectToAction("Index", "Home");
     }
@@ -69,9 +81,18 @@ public class EmployeeController : Controller
             EmployeeId = employeeId
         };
 
-        var model = await _requestSender.SendPostRequest<GetOneEmployeeResponse>(BaseUrl + "GetOneEmployeeById", getOneEmployeeBody);
+        var model = await _requestSender.SendPostRequest<GetOneEmployeeResponse>(BaseUrl + "Employee/GetOneEmployeeById", getOneEmployeeBody);
+        var languages = await _requestSender.SendPostRequest<GetAllLanguageResponse>(BaseUrl + "Language/ListAllLanguage", new object());
+        var departments = await _requestSender.SendPostRequest<GetAllDepartmentResponse>(BaseUrl + "Department/ListAllDepartment", new object());
         
-        return View(model);
+        var viewModel = new UpdateEmployeeViewModel
+        {
+            Employee = model.Employee,
+            Languages = languages.Languages,
+            Departments = departments.Departments
+        };
+        
+        return View(viewModel);
     }
     
     
@@ -82,7 +103,7 @@ public class EmployeeController : Controller
             EmployeeId = employeeId
         };
 
-        await _requestSender.SendWithBodyAsync(BaseUrl + "DeleteEmployee", body, HttpMethod.Delete);
+        await _requestSender.SendWithBodyAsync(BaseUrl + "Employee/DeleteEmployee", body, HttpMethod.Delete);
 
         return RedirectToAction("Index", "Home");
     }

@@ -1,12 +1,8 @@
-﻿using ArtsofteClient.Models.Employee;
-
-namespace ArtsofteClient.Models.Language;
+﻿namespace ArtsofteClient.Models.Language;
 
 public class LanguageModel
 {
     public int Id { get; set; }
     
     public string Language { get; set; }
-
-    public List<EmployeeModel> Employees { get; set; }
 }
